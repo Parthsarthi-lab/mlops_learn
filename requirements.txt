@@ -3,5 +3,4 @@ seaborn
 pandas
 scikit-learn
 mlflow
-fastapi
-uvicorn
+streamlit

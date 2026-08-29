@@ -8,8 +8,10 @@ from sklearn.metrics import root_mean_squared_error
 
 # 1. Setup Tracking
 mlflow.set_tracking_uri("sqlite:///mlflow.db")
+
 experiment_name = "Advertising_Sales_Regression"
 registered_model_name = "Sales_Prediction_Model"
+
 mlflow.set_experiment(experiment_name)
 
 # 2. Data Preparation
