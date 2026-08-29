@@ -1,0 +1,23 @@
+artifact_path: file:D:/BOOKS FOR TEACHING/MLOPS_2026_Upgrade/mlops_learn/mlruns/1/models/m-11c95a8224634e638d869c223e7ee393/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.13.15
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.15.1
+model_id: m-11c95a8224634e638d869c223e7ee393
+model_size_bytes: 7888
+model_uuid: m-11c95a8224634e638d869c223e7ee393
+prompts: null
+run_id: 493b61e9121740679005a375aa5faa90
+utc_time_created: '2026-08-29 08:31:25.503645'

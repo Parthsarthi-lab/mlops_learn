@@ -27,11 +27,3 @@ dist/
 *.egg-info/
 
 
-#Mlflow
-mlruns/
-*/mlruns/
-*/mlflow.db
-*/mlflow.db-journal
-mlflow.log
-**/.trash/
-mlflow.db
