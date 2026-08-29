@@ -38,6 +38,10 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-#      - name: Deploy to AWS App Runner
-#        run: |
-#          aws apprunner start-deployment --service-arn ${{ secrets.AWS_APP_RUNNER_ARN }}
+      - name: Deploy to ECS Express Mode
+              uses: aws-actions/amazon-ecs-deploy-express-service@v1
+              with:
+                service-name: streamlit-mlops-app-a37b
+                image: ${{ steps.login-ecr.outputs.registry }}/streamlit-mlops-app:latest
+                container-port: 8501
+                health-check-path: /_stcore/health
