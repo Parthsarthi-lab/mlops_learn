@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import mlflow
+import joblib
 from mlflow import MlflowClient
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, Ridge
@@ -11,6 +12,8 @@ from sklearn.metrics import root_mean_squared_error
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(BASE_DIR, "data", "data.csv")
 DB_PATH = os.path.join(BASE_DIR, "mlflow.db")
+MODELS_DIR = os.path.join(BASE_DIR, "models")
+os.makedirs(MODELS_DIR, exist_ok=True)
 
 # 1. Setup Tracking
 mlflow.set_tracking_uri(f"sqlite:///{DB_PATH}")
@@ -77,3 +80,15 @@ try:
 except Exception:
     client.set_registered_model_alias(registered_model_name, "champion", challenger_version)
     print(f"🌟 First Champion assigned: Version {challenger_version}")
+
+
+
+# Load current champion from MLflow Registry
+champion_model_uri = f"models:/{registered_model_name}@champion"
+champion_model = mlflow.sklearn.load_model(champion_model_uri)
+
+# Save standalone champion artifact
+champion_export_path = os.path.join(MODELS_DIR, "champion_model.pkl")
+joblib.dump(champion_model, champion_export_path)
+
+print(f"✅ Exported registry champion model to {champion_export_path}")
