@@ -32,7 +32,7 @@ jobs:
 
       - name: Retrain Model & Update MLflow Registry
         run: |
-          python src/train_mlflow.py
+          python src/train.py
 
       - name: Commit Updated MLflow Database and Artifacts
         run: |
